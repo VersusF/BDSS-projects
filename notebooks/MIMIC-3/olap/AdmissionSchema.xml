@@ -1,0 +1,22 @@
+<Schema name="Admissions">
+  <Cube name="Admission" visible="true" cache="true" enabled="true">
+    <Table name="admissions" schema="olap">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="datetime" name="Admission time">
+      <Hierarchy name="dates" visible="true" hasAll="false" primaryKey="datetime">
+        <Table name="admissions_time" schema="olap">
+        </Table>
+        <Level name="year" visible="true" column="year" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="month" visible="true" column="month" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="day" visible="true" column="day" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="count" column="id" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="deaths" column="death" aggregator="distinct-count" visible="true">
+    </Measure>
+  </Cube>
+</Schema>

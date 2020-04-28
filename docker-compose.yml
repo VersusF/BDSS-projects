@@ -1,0 +1,43 @@
+version: '3'
+
+services: 
+  notebooks:
+    build: .
+    ports: 
+      - "8888:8888"
+    volumes: 
+      - ./notebooks/:/home/jovyan/work/
+      - ./MIMIC3-Demo/:/mimic3/
+    environment:
+      - REDIS_PORT=8889 
+  redis: 
+    image: redis:4.0.5-alpine    
+    command: ["redis-server", "--appendonly","yes", "--port", "8889"]
+    ports:
+      - "8889:8889"
+    volumes:
+      - ./redis-data:/data
+  postgres:
+    image:
+      clkao/postgres-plv8
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=password 
+    ports:  
+      - 8890:5432
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:  
+      - 5050:5050
+    environment:
+      - PGADMIN_LISTEN_PORT=5050
+      - PGADMIN_DEFAULT_EMAIL=user@domain.com
+      - PGADMIN_DEFAULT_PASSWORD=password
+  bi_server:
+    image: kmnrstzaiou/pentaho-bi-saiku
+    ports:
+      - "8080:8080"
+    command: bash -c "/biserver-ce/start-pentaho.sh && tail -F anything" 
+
+

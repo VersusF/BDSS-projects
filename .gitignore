@@ -1,0 +1,5 @@
+MIMIC3-Demo/
+postgres-data/
+redis-data/
+adr.sql
+*.ipynb_checkpoints

@@ -1,0 +1,52 @@
+<Schema name="Reports">
+  <Cube name="signals_first" visible="true" cache="true" enabled="true">
+    <Table name="signals" schema="olap_analysis">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="vt" highCardinality="false" name="Time">
+      <Hierarchy name="dates" visible="true" hasAll="true">
+        <Table name="dim_time" schema="olap_analysis">
+        </Table>
+        <Level name="year" visible="true" column="year" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="month" visible="true" column="month" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="day" visible="true" column="vt" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id" highCardinality="false" name="ADR">
+      <Hierarchy name="Meddra" visible="true" hasAll="true" primaryKey="id">
+        <Table name="dim_adr" schema="olap_analysis">
+        </Table>
+        <Level name="soc" visible="true" column="soc" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="preferred term" visible="true" column="preferred_term" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="low level term" visible="true" column="low_term" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id" highCardinality="false" name="Substance">
+      <Hierarchy name="Drug" visible="true" hasAll="true" primaryKey="id">
+        <Table name="dim_drug" schema="olap_analysis">
+        </Table>
+        <Level name="atc 1" visible="true" column="atc_1" uniqueMembers="false">
+        </Level>
+        <Level name="atc 2" visible="true" column="atc_2" uniqueMembers="false">
+        </Level>
+        <Level name="atc 3" visible="true" column="atc_3" uniqueMembers="false">
+        </Level>
+        <Level name="atc 4" visible="true" column="atc_4" uniqueMembers="false">
+        </Level>
+        <Level name="atc 5" visible="true" column="atc_5" uniqueMembers="false">
+        </Level>
+        <Level name="active principle" visible="true" column="name" uniqueMembers="false">
+        </Level>
+        <Level name="commercial name" visible="true" column="brand_name" uniqueMembers="false">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="count_signals" column="id" aggregator="distinct-count" visible="true">
+    </Measure>
+  </Cube>
+</Schema>

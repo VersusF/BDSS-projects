@@ -1,0 +1,38 @@
+<Schema name="New Schema1">
+  <Cube name="External Signal" visible="true" cache="true" enabled="true">
+    <Table name="ext_signals" schema="olap_analysis" alias="">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="vt" name="Time">
+      <Hierarchy name="Dates" visible="true" hasAll="true" primaryKey="vt">
+        <Table name="dim_time" schema="olap_analysis" alias="">
+        </Table>
+        <Level name="Y" visible="true" column="year" uniqueMembers="false">
+        </Level>
+        <Level name="M" visible="true" column="month" uniqueMembers="false">
+        </Level>
+        <Level name="D" visible="true" column="vt" uniqueMembers="false">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="adr_id" name="Reactions">
+      <Hierarchy name="Meddra" visible="true" hasAll="true" primaryKey="id">
+        <Table name="ext_adrs" schema="olap_analysis" alias="">
+        </Table>
+        <Level name="PT" visible="true" column="preferred_term" uniqueMembers="false">
+        </Level>
+        <Level name="LLT" visible="true" column="low_term" uniqueMembers="false">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="drug_id" name="Sunstances">
+      <Hierarchy name="Drugs" visible="true" hasAll="true" primaryKey="id">
+        <Table name="ext_drugs" schema="olap_analysis" alias="">
+        </Table>
+        <Level name="Brand Name" visible="true" column="brand_name" uniqueMembers="false">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Signal Count" column="id" aggregator="distinct-count" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
