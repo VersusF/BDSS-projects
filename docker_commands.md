@@ -11,7 +11,7 @@
   * --name container_name : assign name to container. If the name is not specified docker automatically creates one
   * -e : set environment variables
   * -p <host_port>:<container_port> : map the host port to the container port 
-  * --rm : remove the existing container with the same name
+  * --rm : automatically removes the container once it exists
   
     EXAMPLES:
     ``` 
@@ -26,29 +26,29 @@
     ```
     docker run --rm --name test -d ubuntu
     ```
-    Create and run a container named test. If it already exists, remove it and create again.
+    Create and run a container named test. When the container is stopped, it is removed.
   
 * Remove a container
   ```
-  docker rm [OPTIONS] container_name (or container_id) [container_name...]
+  docker rm [OPTIONS] CONTAINER (or CONTAINER ID) [CONTAINER...]
   ```
   Remove one or more containers.
 
 * Start a container
   ```
-  docker start [OPTIONS] container_name [container_name...]
+  docker start [OPTIONS] CONTAINER [CONTAINER...]
   ```
   Start one or more stopped containers. Cannot be used to create a container.
 
 * Attach a container
   ```
-  docker attach [OPTIONS] container_name
+  docker attach [OPTIONS] CONTAINER
   ```
   Attach local standard input, output, and error streams to a running container.
 
 * Fetch the logs of a container
   ```
-  docker logs [OPTIONS] container_name
+  docker logs [OPTIONS] CONTAINER
   ```
   Options:
   * -f : follow log output
@@ -57,7 +57,7 @@
 
 * Stop the container
   ```
-  docker stop [OPTIONS] container_name [container_name...]
+  docker stop [OPTIONS] CONTAINER [CONTAINER...]
   ```
 
 * List containers
@@ -91,12 +91,47 @@
 
 * Copy a file/directory from local filesystem to container
   ```
-  docker cp [OPTIONS] src_path container_name:dest_path
+  docker cp [OPTIONS] src_path CONTAINER:dest_path
   ```
 
 * Copy a file/directory from container to local filesystem
   ```
-  docker cp [OPTIONS] container_name:src_path dest_path
+  docker cp [OPTIONS] CONTAINER:src_path dest_path
   ```
 
-  
+* Build an image from dockerfile:
+  ```
+  docker build [OPTIONS] PATH URL
+  ```
+  Options:
+  * -f path/Dockerfile : specify the dockerfile
+  * -t image_name: tag a name to the image
+
+  EXAMPLES:
+  ```
+  docker build .
+  ```
+  . specifies to search for the docker in the local directory
+  ```
+  docker build -f PATH/Dockerfile .
+  ```
+  ```
+  docker build -t IMAGE .
+  ```
+
+* Remove image:
+  ```
+  docker image rm [OPTIONS] IMAGE [IMAGE...]
+  ```
+<!-- # Dockerfile
+Docker can build images automatically by reading the instructions from a Dockerfile. A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image. Using docker build users can create an automated build that executes several command-line instructions in succession.
+
+When you issue a docker build command, the current working directory is called the build context.
+
+The build is run by the Docker daemon, not by the CLI. The first thing a build process does is send the entire context (recursively) to the daemon. In most cases, it’s best to start with an empty directory as context and keep your Dockerfile in that directory. Add only the files needed for building the Dockerfile.
+
+The docker build command builds an image from a Dockerfile and a context. The build’s context is the set of files at a specified location PATH or URL. The PATH is a directory on your local filesystem. The URL is a Git repository location. -->
+
+
+
+Source: Docker documentation (docs.docker.com)
