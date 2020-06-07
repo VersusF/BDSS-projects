@@ -121,8 +121,34 @@
 
 * Remove image:
   ```
+  docker rmi [OPTIONS] IMAGE [IMAGE...]
   docker image rm [OPTIONS] IMAGE [IMAGE...]
   ```
+
+* Execute a command in a running container:
+  ```
+  docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
+  ```
+  EXAMPLE:
+  ```
+  docker exec -it bdss bin/bash
+  ```
+  Execute an iteratictive bash shell on the container named bdss. Only work on running containers.
+
+* Create a volume:
+  ```
+  docker run -v ABS_PATH_HOST:ABS_PATH_CONTAINER --name CONTAINER IMAGE
+  ```
+  A volume is a directory created outisde of the Union File System, in the host filesystem. It is used to save and share data between containers.
+  -v in the run command allows to mount a directory in the host into a directory in the container.
+  --read-only: the dir is read only.
+
+* Start a docker compose
+  ```
+  docker-compose up
+  ```
+  
+  
 <!-- # Dockerfile
 Docker can build images automatically by reading the instructions from a Dockerfile. A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image. Using docker build users can create an automated build that executes several command-line instructions in succession.
 
