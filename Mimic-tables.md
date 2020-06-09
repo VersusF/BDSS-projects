@@ -110,3 +110,56 @@ Interesting fields:
 - Previous and current careunit (Values are in a table &rarr; groupable)
 - Previous and current ward id
 - In-time and out-time with LOS (length of stay)
+
+
+### Caregivers
+Represent a person who assists a patient. No interesting info
+
+
+### Input events CV
+**Note on input/output**: Input and outputs represent substancies to or from the patient collected with two different systems (CV and MV).
+
+Table representing input events from CV. It's linked with admission, patient, icustay and a caregiver.
+
+Interesting fields:
+- time
+- amount, rate and other numerical values useful only as measures
+
+
+### Input events MV
+Table representing input events from MV. It's linked with admission, patient, icustay and a caregiver.
+
+Interesting fields:
+- time
+- amount, rate and other numerical values useful only as measures
+- Category &rarr; this could be a hierarchy in a dimension
+
+
+### Output events
+Table representing output events. It's linked with admission, patient, icustay and a caregiver.
+
+Interesting fields:
+- time
+- amount, rate and other numerical values useful only as measures
+
+
+### Procedure events MV
+No documentation provided at [mimic official documentation](https://mimic.physionet.org/mimictables/procedureevents_mv/)
+
+
+### Note event
+Only text annotations
+
+
+### DItems
+Table representing descriptions for items in ICU. It's a main table.
+
+Interesting fields:
+- Links to: the table which refers this item &rarr; potential hierarchy
+
+
+### Chartevent
+Biggest table in MIMIC, with 330M of lines. links to patient, admission, icustay, caregivers. It represents every charted data in the DB.
+
+Interesting fields:
+- date
