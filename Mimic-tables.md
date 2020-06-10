@@ -158,8 +158,44 @@ Interesting fields:
 - Links to: the table which refers this item &rarr; potential hierarchy
 
 
-### Chartevent
+### Chart event
 Biggest table in MIMIC, with 330M of lines. links to patient, admission, icustay, caregivers. It represents every charted data in the DB.
 
 Interesting fields:
 - date
+
+
+### Datetime events
+Contains all date measurements for an ICU patient. Links as usual to patient, admission, icustay, caregiver.
+
+There are numerical values with their UOM, but I don't think they could be useful.
+
+
+### Lab events
+Contains all laboratory measurements for a patient. Links to patient, admission and item.
+
+Interesting fields:
+- value with UOM
+- flag (Indicates if value is out of a certain threshold)
+
+
+### D Lab items
+Definition table for all laboratory measurements.
+
+The LONIC code could be a hierarchy
+
+
+### D Icd Diagnoses
+Table with the ICD diagnoses definitions.
+
+The only interesting fields is the ICD-9 code which can be an hierarchy.
+
+
+### D Cpt
+High-level definitions for current procedural terminology (CPT) codes. Links with Cpt events.
+
+All the fields forms a code divided in hierarchy.
+
+
+### D Icd Procedures
+Definition table for ICD procedures. Links with ICD9 code. Only text.
