@@ -143,10 +143,16 @@
   -v in the run command allows to mount a directory in the host into a directory in the container.
   --read-only: the dir is read only.
 
-* Start a docker compose
+* Docker compose
   ```
   docker-compose up
   ```
+* Build a specific service in a docker-compose
+  ```
+  docker-compose build SERVICE
+  ```
+
+
   
   
 <!-- # Dockerfile
