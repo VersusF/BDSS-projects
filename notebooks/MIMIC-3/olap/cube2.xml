@@ -1,0 +1,44 @@
+<Schema name="Prescriptions">
+  <Cube name="Prescription" visible="true" cache="true" enabled="true">
+    <Table name="prescriptions" schema="olap">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="start_date" name="Start date">
+      <Hierarchy name="dates" visible="true" hasAll="false" primaryKey="start_date">
+        <Table name="prescription_date" schema="olap">
+        </Table>
+        <Level name="day" visible="true" column="day" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="month" visible="true" column="month" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="year" visible="true" column="year" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="ndc_code" name="Drug NDC">
+      <Hierarchy name="codes" visible="true" hasAll="false" primaryKey="ndc_code">
+        <Table name="prescription_drug" schema="olap">
+        </Table>
+        <Level name="NDC package" visible="true" column="ndc_package" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="NDC product" visible="true" column="ndc_product" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="NDC labeler" visible="true" column="ndc_labeler" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="drug_type" name="Drug type">
+      <Hierarchy name="types" visible="true" hasAll="false" primaryKey="drug_type">
+        <Table name="prescription_drug_type" schema="olap">
+        </Table>
+        <Level name="Drug type" visible="true" column="drug_type" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Count" column="row_id" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="Average duration" column="duration" aggregator="avg" visible="true">
+    </Measure>
+    <Measure name="Average patient age" column="patient_age" aggregator="avg" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
