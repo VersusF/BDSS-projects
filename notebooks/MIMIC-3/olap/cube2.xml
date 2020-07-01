@@ -6,11 +6,11 @@
       <Hierarchy name="dates" visible="true" hasAll="false" primaryKey="start_date">
         <Table name="prescription_date" schema="olap">
         </Table>
-        <Level name="day" visible="true" column="day" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        <Level name="Day" visible="true" column="day" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
         </Level>
-        <Level name="month" visible="true" column="month" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        <Level name="Month" visible="true" column="month" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
         </Level>
-        <Level name="year" visible="true" column="year" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        <Level name="Year" visible="true" column="year" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
         </Level>
       </Hierarchy>
     </Dimension>
@@ -36,7 +36,7 @@
     </Dimension>
     <Measure name="Count" column="row_id" aggregator="distinct-count" visible="true">
     </Measure>
-    <Measure name="Average duration" column="duration" aggregator="avg" visible="true">
+    <Measure name="Average duration (days)" column="duration" aggregator="avg" visible="true">
     </Measure>
     <Measure name="Average patient age" column="patient_age" aggregator="avg" visible="true">
     </Measure>
