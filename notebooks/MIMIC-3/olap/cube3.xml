@@ -1,0 +1,55 @@
+<Schema name="Admissions">
+  <Cube name="Admission" visible="true" cache="true" enabled="true">
+    <Table name="admissions" schema="olap">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="intime" name="Admission date">
+      <Hierarchy name="dates" visible="true" hasAll="false" primaryKey="day">
+        <Table name="admission_intime" schema="olap">
+        </Table>
+        <Level name="Day" visible="true" column="day" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Month" visible="true" column="month" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Year" visible="true" column="year" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="hospital_expire_flag" name="Death">
+      <Hierarchy name="death" visible="true" hasAll="false" primaryKey="hospital_expire_flag">
+        <Table name="admission_death" schema="olap">
+        </Table>
+        <Level name="Death" visible="true" column="status" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="status" name="Patient status">
+      <Hierarchy name="types" visible="true" hasAll="false" primaryKey="status">
+        <Table name="admission_pat_status" schema="olap">
+        </Table>
+        <Level name="Gender" visible="true" column="gender" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Ethnicity" visible="true" column="ethnicity" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Insurance" visible="true" column="insurance" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <!--<Dimension type="StandardDimension" visible="true" foreignKey="age" name="Patient age">
+      <Hierarchy name="types" visible="true" hasAll="false" primaryKey="age">
+        <Table name="admission_pat_age" schema="olap">
+        </Table>
+        <Level name="Age" visible="true" column="age" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Decade" visible="true" column="decade" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension> -->
+
+    <Measure name="Count" column="id" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="Average diagnosis" column="diagnosis_count" aggregator="avg" visible="true">
+    </Measure>
+    <Measure name="Average output events" column="output_events_count" aggregator="avg" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
