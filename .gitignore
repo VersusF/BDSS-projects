@@ -1,4 +1,5 @@
 MIMIC3-Demo/
+MIMIC3-Reduced/
 postgres-data/
 redis-data/
 adr.sql

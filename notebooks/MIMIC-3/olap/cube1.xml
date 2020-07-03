@@ -2,8 +2,8 @@
   <Cube name="I.C.U. stays" visible="true" cache="true" enabled="true">
     <Table name="icustays" schema="olap">
     </Table>
-    <Dimension type="StandardDimension" visible="true" foreignKey="intime" name="In-time">
-      <Hierarchy name="dates" visible="true" hasAll="false" primaryKey="intime">
+    <Dimension type="StandardDimension" visible="true" foreignKey="day" name="In-time">
+      <Hierarchy name="dates" visible="true" hasAll="false" primaryKey="day">
         <Table name="icu_stay_time" schema="olap">
         </Table>
         <Level name="Day" visible="true" column="day" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">

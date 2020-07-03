@@ -4,6 +4,6 @@ DB_MIMIC = Sequel.connect(adapter: 'postgres',
                           host: 'postgres',
                           user: 'postgres',
                           password: 'password',
-                          database: 'mimic3_demo',
+                          database: 'mimic3', # or mimic3_demo for the old DB
                           search_path: ['mimiciii']
                           )
