@@ -6,11 +6,11 @@
       <Hierarchy name="dates" visible="true" hasAll="false" primaryKey="day">
         <Table name="icu_stay_time" schema="olap">
         </Table>
-        <Level name="Day" visible="true" column="day" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        <Level name="Year" visible="true" column="year" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
         </Level>
         <Level name="Month" visible="true" column="month" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
         </Level>
-        <Level name="Year" visible="true" column="year" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        <Level name="Day" visible="true" column="day" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
         </Level>
       </Hierarchy>
     </Dimension>
@@ -26,9 +26,9 @@
       <Hierarchy name="ages" visible="true" hasAll="false" primaryKey="age_id">
         <Table name="icu_stay_pat_age" schema="olap">
         </Table>
-        <Level name="Age" visible="true" column="age" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
-        </Level>
         <Level name="Decade" visible="true" column="decade" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Age" visible="true" column="age" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
         </Level>
       </Hierarchy>
     </Dimension>

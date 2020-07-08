@@ -14,4 +14,12 @@ RUN gem install sequel
 RUN apt-get install -y sqlite3
 RUN apt-get install -y libsqlite3-dev
 RUN gem install sqlite3 
+RUN gem install sinatra
+RUN gem install sinatra-contrib
+RUN apt-get install -y libpng-dev
+RUN apt-get install -y --reinstall zlibc zlib1g zlib1g-dev
+RUN gem install nokogiri
+RUN pip install graphviz
+RUN pip install pydotplus
+RUN apt install -y python-pydot python-pydot-ng graphviz
 CMD jupyter notebook --allow-root --NotebookApp.token='' 

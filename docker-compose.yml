@@ -9,6 +9,7 @@ services:
       - ./notebooks/:/home/jovyan/work/
       # - ./MIMIC3-Demo/:/mimic3/
       - ./MIMIC3-Reduced/:/mimic3/
+      - ./datasets/:/datasets/
     environment:
       - REDIS_PORT=8889 
   redis: 
