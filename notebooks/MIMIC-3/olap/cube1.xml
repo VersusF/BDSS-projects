@@ -32,7 +32,7 @@
         </Level>
       </Hierarchy>
     </Dimension>
-    <Measure name="Count" column="id" aggregator="distinct-count" visible="true">
+    <Measure name="Count" column="id" aggregator="count" visible="true">
     </Measure>
     <Measure name="Average duration (days)" column="elapsed_days" aggregator="avg" visible="true">
     </Measure>
