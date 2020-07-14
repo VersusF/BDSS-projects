@@ -2,7 +2,6 @@ MIMIC3-Demo/
 MIMIC3-Reduced/
 postgres-data/
 redis-data/
-datasets/
 adr.sql
 *__pycache__*
 *.ipynb_checkpoints
