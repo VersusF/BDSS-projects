@@ -26,13 +26,25 @@
     </Dimension>
 
     <Dimension type="StandardDimension" visible="true" foreignKey="status" name="Patient status">
-      <Hierarchy name="types" visible="true" hasAll="false" primaryKey="status">
+      <Hierarchy name="genders" visible="true" hasAll="false" primaryKey="status">
         <Table name="admission_pat_status" schema="olap">
         </Table>
         <Level name="Gender" visible="true" column="gender" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
         </Level>
+        <Level name="Status" visible="true" column="status" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="ethnicity" visible="true" hasAll="false" primaryKey="status">
+        <Table name="admission_pat_status" schema="olap">
+        </Table>
         <Level name="Ethnicity" visible="true" column="ethnicity" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
         </Level>
+        <Level name="Status" visible="true" column="status" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="insurances" visible="true" hasAll="false" primaryKey="status">
+        <Table name="admission_pat_status" schema="olap">
+        </Table>
         <Level name="Insurance" visible="true" column="insurance" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
         </Level>
         <Level name="Status" visible="true" column="status" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
